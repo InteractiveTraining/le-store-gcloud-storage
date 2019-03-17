@@ -1,6 +1,6 @@
 {
   "name": "@interactivetraining/le-store-gcloud-storage",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Automatically store your Let's Encrypt certificates using Google Cloud Storage and Greenlock (node-greenlock)",
   "main": "dist/index.js",
   "author": "Interactive Training",

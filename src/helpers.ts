@@ -112,7 +112,10 @@ export function readCloudFile(): Promise<IGCloudStoreDB> {
     let buffer = '';
     const storage = new Storage({
       projectId: GCloudStorageOptions.projectId,
-      keyFilename: GCloudStorageOptions.keyFilename
+      credentials: {
+        client_email: GCloudStorageOptions.clientEmail,
+        private_key: GCloudStorageOptions.privateKey
+      }
     });
     const exists = (await storage.bucket(GCloudStorageOptions.bucketName).file(GCloudStorageOptions.dbFileName).exists())[0];
     if (exists) {
@@ -140,7 +143,10 @@ export async function saveCloudFile(dataObj: IGCloudStoreDB): Promise<IGCloudSto
   fs.writeFileSync(GCloudStorageOptions.dbFileName, JSON.stringify(dataObj), {encoding: 'utf-8'});
   const storage = new Storage({
     projectId: GCloudStorageOptions.projectId,
-    keyFilename: GCloudStorageOptions.keyFilename
+    credentials: {
+      client_email: GCloudStorageOptions.clientEmail,
+      private_key: GCloudStorageOptions.privateKey
+    }
   });
   await storage.bucket(GCloudStorageOptions.bucketName).upload(GCloudStorageOptions.dbFileName);
   fs.unlinkSync(GCloudStorageOptions.dbFileName);

@@ -1,8 +1,9 @@
 export interface IGCloudStoreOptions {
   bucketName: string;
   projectId: string;
-  keyFilename: string;
   dbFileName: string;
+  clientEmail: string;
+  privateKey: string;
 }
 
 export interface IKeypair {

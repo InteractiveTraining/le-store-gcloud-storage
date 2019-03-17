@@ -11,8 +11,8 @@ import {IGCloudStoreOptions} from './interfaces';
 
 export function GCloudStoreCreate(config: IGCloudStoreOptions) {
   
-  if (!config || (config && (!config.bucketName || !config.dbFileName || !config.keyFilename || !config.projectId))) {
-    throw new Error('le-store-gcloud-storage requires bucketName, projectId, keyFilename, and dbFileName.');
+  if (!config || (config && (!config.bucketName || !config.dbFileName || !config.clientEmail || !config.privateKey || !config.projectId))) {
+    throw new Error('le-store-gcloud-storage requires bucketName, projectId, clientEmail, privateKey, and dbFileName.');
   }
   
   Object.keys(config).forEach((key) => {
